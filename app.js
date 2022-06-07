@@ -1,28 +1,45 @@
-
-function EnCuotas (producto,cuotas){
-    if (cuotas == 3) {
-        num = producto / cuotas
-        return num
-    } else if (cuotas == 6) {
-        num = producto / cuotas
-        return num
-    } else if (cuotas == 12){
-        num = producto / cuotas
-        return num
-    } else if (cuotas == 18){
-        num = producto / cuotas
-        return num
-    } else{
-        return "No contamos con ese numero de cuotas, Ingrese un numero valido"
-    } 
-    
+// Funciones
+function precioCuotas(valor, numCuotas){
+    resultado = valor / numCuotas
+    return resultado
 }
 
-let produ = prompt("Ingrese el valor del producto o 'ESC' para salir")
-while (produ != "ESC") {
-    let NumCuotas = prompt("Ingrese el numero de cuotas (ej: 3, 6, 12, 18)")
-    if(NumCuotas == 3 || NumCuotas == 6 || NumCuotas == 12 || NumCuotas == 18){
-        alert("En "+ NumCuotas+ " Cuotas deberia pagar: $" + EnCuotas(produ,NumCuotas) + " por mes.")
-        produ = prompt("Ingrese otro valor o la palabra 'ESC' para terminar") 
-    }else{alert(EnCuotas(produ,NumCuotas))}      
+function continuar(){
+    let continua = +prompt("Desea consultar otro producto ? 1- SI / 2-NO")
+    if(continua == 2){
+        contador++
+        alert("Hasta luego");
+    }
+    else{
+        alert("Espere un segundo que lo llevamos al inicio");
+    }
 }
+
+
+let contador = 0
+do{
+let producto = +prompt("Ingrese el valor en $ de su producto")
+let cuotas =  +prompt("Ingrese el numero de cuotas. (Ej: 3,6,9,12)")
+switch (cuotas) {
+    case 3:
+        alert(`En ${cuotas} cuotas deberia pagar: $ ${precioCuotas(producto, cuotas)} por mes`)
+        continuar()
+        break;
+    case 6:
+        alert(`En ${cuotas} cuotas deberia pagar: $ ${precioCuotas(producto, cuotas)} por mes`)
+        continuar()
+        break;
+    case 9:
+        alert(`En ${cuotas} cuotas deberia pagar: $ ${precioCuotas(producto, cuotas)} por mes`)
+        continuar()
+        break;
+    case 12:
+        alert(`En ${cuotas} cuotas deberia pagar: $ ${precioCuotas(producto, cuotas)} por mes`)
+        continuar()
+        break;    
+    default:
+        alert("Ingreso un numero de cuotas incorrecto")
+        break;
+}
+}
+while(contador != 1)
